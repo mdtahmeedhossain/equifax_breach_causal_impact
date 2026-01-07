@@ -1,7 +1,4 @@
-"""
-Create Visualizations for Equifax Breach Analysis
-Shows BOTH immediate impact and sustained average effect
-"""
+"""Generate visualizations for Equifax breach analysis."""
 
 import pandas as pd
 import numpy as np
@@ -9,29 +6,24 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 
-# Set style
 sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (12, 6)
 plt.rcParams['font.size'] = 11
 
-# Configuration
 EVENT_DATE = '2017-09-08'
 TREATED_UNIT = 'EFX'
 
-print("Creating visualizations...")
+print("Generating figures...")
 
-# Load prepared data
 df_prepared = pd.read_csv('../data/prepared_data.csv')
 df_prepared['date'] = pd.to_datetime(df_prepared['date'])
 
-# Load results
 with open('../data/analysis_results.json', 'r') as f:
     results = json.load(f)
 
 placebo_df = pd.read_csv('../data/placebo_effects.csv')
 
-# Figure 1: Time Series - Treated vs Control Average (WITH POST-TREATMENT)
-print("  Creating Figure 1: Time Series...")
+print("  [1/7] Time series...")
 fig, ax = plt.subplots(figsize=(14, 7))
 
 # Calculate average returns for control group by date
@@ -63,7 +55,7 @@ plt.savefig('../figures/time_series.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 # Figure 2: Dual Treatment Effects Comparison
-print("  Creating Figure 2: Immediate vs Sustained Effects...")
+print("  [2/7] Immediate vs sustained...")
 fig, ax = plt.subplots(figsize=(12, 7))
 
 # Data for plotting
@@ -106,7 +98,7 @@ plt.savefig('../figures/immediate_vs_sustained.png', dpi=300, bbox_inches='tight
 plt.close()
 
 # Figure 3: Placebo Test Distributions (STANDARDIZED)
-print("  Creating Figure 3: Placebo Distributions...")
+print("  [3/7] Placebo distributions...")
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
 
 # Standardize placebo effects to mean=0, std=1
@@ -163,7 +155,7 @@ plt.savefig('../figures/placebo_distributions.png', dpi=300, bbox_inches='tight'
 plt.close()
 
 # Figure 4: Method Comparison with Placebo RMSE
-print("  Creating Figure 4: Method Comparison...")
+print("  [4/7] Method comparison...")
 fig, ax = plt.subplots(figsize=(10, 7))
 
 methods = ['DiD', 'SCM']
@@ -212,7 +204,7 @@ plt.savefig('../figures/method_comparison.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 # Figure 5: Synthetic Control Donor Weights
-print("  Creating Figure 5: Donor Weights...")
+print("  [5/7] Donor weights...")
 weights_dict = results['scm_weights']
 
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -238,7 +230,7 @@ plt.savefig('../figures/donor_weights.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 # Figure 6: Parallel Trends Visualization (PRE-TREATMENT ONLY!)
-print("  Creating Figure 6: Parallel Trends...")
+print("  [6/7] Parallel trends...")
 fig, ax = plt.subplots(figsize=(14, 7))
 
 # Get pre-treatment data only
@@ -273,7 +265,7 @@ plt.savefig('../figures/parallel_trends.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 # Figure 7: Event Study Plot (WITH POST-TREATMENT)
-print("  Creating Figure 7: Event Study...")
+print("  [7/7] Event study...")
 fig, ax = plt.subplots(figsize=(14, 7))
 
 # Calculate average treatment effect by days relative to event
@@ -314,12 +306,4 @@ plt.tight_layout()
 plt.savefig('../figures/event_study.png', dpi=300, bbox_inches='tight')
 plt.close()
 
-print("\n✓ All visualizations created successfully!")
-print("  Saved to figures/:")
-print("    - time_series.png (WITH POST-TREATMENT)")
-print("    - immediate_vs_sustained.png (NEW: DUAL EFFECTS COMPARISON)")
-print("    - placebo_distributions.png")
-print("    - method_comparison.png")
-print("    - donor_weights.png")
-print("    - parallel_trends.png (PRE-TREATMENT ONLY)")
-print("    - event_study.png (EXTENDED TO +21 DAYS)")
+print("\nDone. 7 figures saved to figures/")

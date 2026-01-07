@@ -1,32 +1,32 @@
 {
-  "immediate_did_effect": -0.1324517510783682,
-  "immediate_did_p_value": 4.744003147268456e-89,
-  "immediate_did_std_error": 0.0066201250986014535,
+  "immediate_did_effect": -0.13245127945604396,
+  "immediate_did_p_value": 4.74312214633547e-89,
+  "immediate_did_std_error": 0.006620098462351638,
   "immediate_did_conf_int": [
-    -0.14542695784477672,
-    -0.11947654431195968
+    -0.14542643401636215,
+    -0.11947612489572576
   ],
-  "immediate_scm_effect": -0.1306633145515528,
-  "immediate_scm_pre_rmse": 0.006030373438015389,
-  "sustained_did_effect": -0.018105990012086185,
-  "sustained_did_p_value": 0.3727419632586648,
-  "sustained_did_std_error": 0.020313019701133354,
+  "immediate_scm_effect": -0.13066285409944636,
+  "immediate_scm_pre_rmse": 0.006030395956494739,
+  "sustained_did_effect": -0.018105965642860197,
+  "sustained_did_p_value": 0.3727418466119168,
+  "sustained_did_std_error": 0.02031298740483303,
   "sustained_did_conf_int": [
-    -0.05791877704356013,
-    0.02170679701938776
+    -0.05791868937474867,
+    0.021706758089028277
   ],
-  "sustained_scm_effect": -0.01772390634569234,
-  "sustained_scm_pre_rmse": 0.006030373438015389,
+  "sustained_scm_effect": -0.017723892833102627,
+  "sustained_scm_pre_rmse": 0.006030395956494739,
   "scm_weights": {
-    "MCO": 0.2995286080770887,
-    "TRU": 0.20782058523681132,
-    "SPY": 0.25209584653042655,
-    "VTI": 0.2405549601556735,
+    "MCO": 0.2995320963677296,
+    "TRU": 0.20781845706506552,
+    "SPY": 0.2520947775404879,
+    "VTI": 0.240554669026717,
     "EXPGY": 0.0,
-    "BAH": 0.0
+    "BAH": 4.885842738943738e-18
   },
-  "did_placebo_rmse": 0.0008706585709680459,
-  "scm_placebo_rmse": 0.0006802840739613616,
-  "parallel_trends_p_value": 0.8143942284324802,
+  "did_placebo_rmse": 0.0008706624834363286,
+  "scm_placebo_rmse": 0.0006802998185695515,
+  "parallel_trends_p_value": 0.8143922322517967,
   "parallel_trends_passes": true
 }

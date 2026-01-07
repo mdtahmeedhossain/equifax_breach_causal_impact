@@ -1,8 +1,8 @@
 # Equifax Data Breach: Causal Impact Analysis
 
-Estimating the causal impact of the 2017 Equifax data breach on stock returns using Difference-in-Differences and Synthetic Control Method.
+A causal analysis of the 2017 Equifax data breach, estimating immediate and sustained impacts on stock returns using Difference-in-Differences and Synthetic Control.
 
-On September 8, 2017, Equifax disclosed a breach affecting 147 million Americans. This project estimates both the immediate market reaction and whether the effect persisted.
+On September 8, 2017, Equifax disclosed a breach affecting 147 million Americans. This project quantifies the market reaction and tests whether the effect persisted or reversed.
 
 ---
 
@@ -13,9 +13,7 @@ On September 8, 2017, Equifax disclosed a breach affecting 147 million Americans
 | Immediate (Sept 8) | -13.25% | -13.07% | < 0.001 |
 | Sustained (3 weeks) | -1.81% | -1.77% | 0.37 |
 
-The breach caused an immediate ~13% drop. The sustained effect is not statistically significant with Newey-West standard errors — the market overreacted initially, then corrected.
-
-With naive OLS standard errors, both effects appear significant (p < 0.001). Newey-West correction for autocorrelation reveals the sustained effect is indistinguishable from zero. The immediate shock is large enough to survive either inference approach.
+The breach caused an immediate ~13% drop. The sustained effect is not statistically significant — the market overreacted initially, then corrected.
 
 Both methods agree within 0.2 percentage points.
 
@@ -23,7 +21,7 @@ Both methods agree within 0.2 percentage points.
 
 ## Methods
 
-**Difference-in-Differences:** Compares Equifax to control stocks (other financial services + market indices) before vs after the breach. Uses Newey-West HAC standard errors (maxlags=5) for autocorrelation.
+**Difference-in-Differences:** Compares Equifax to control stocks (other financial services + market indices) before vs after the breach. Uses Newey-West standard errors to correct for autocorrelation in daily returns.
 
 **Synthetic Control:** Constructs a weighted combination of controls that best matches Equifax's pre-breach returns. Weights: Moody's 30%, S&P 500 25%, VTI 24%, TransUnion 21%.
 
@@ -93,4 +91,3 @@ Or: `jupyter notebook Equifax_Causal_Impact_Analysis.ipynb`
 
 - Abadie, Diamond & Hainmueller (2010). Synthetic control methods. *JASA*.
 - Angrist & Pischke (2009). *Mostly Harmless Econometrics*.
-- Newey & West (1987). HAC covariance matrix. *Econometrica*.
